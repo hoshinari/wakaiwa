@@ -26,6 +26,10 @@ class Result extends StatefulWidget {
 }
 
 class _ResultState extends State<Result> {
+  List<String> _authers = [
+    "夏目 漱石",
+    "芥川 龍之介",
+  ];
   String _secntence = "";
   final int index;
 
@@ -76,17 +80,57 @@ class _ResultState extends State<Result> {
               color: Colors.black.withOpacity(0.2),
             ),
           ),
-
-          Container(
-            padding: new EdgeInsets.all(50.0),
-            child: new Form(
-              child: new ListView(
+          Center(
+            child: _secntence != "" ?
+            Container(
+              alignment: Alignment.center,
+              padding: new EdgeInsets.all(15.0),
+              child: new Column(
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Text(
-                    _secntence,
-                    style: TextStyle(
-                      fontFamily:'Noto_Serif_JP',
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Text(
+                        _authers[index],
+                        style: TextStyle(
+                          fontFamily: 'Noto_Serif_JP',
+                          fontSize: 20
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(5),
+                      ),
+                      Text(
+                        "風な文章",
+                        style: TextStyle(
+                          fontFamily: 'Noto_Serif_JP',
+                          fontSize: 15
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: new Border.all(
+                        color: Colors.lime[900],
+                        width: 3,
+                      ),
                     ),
+                    child: Text(
+                      _secntence,
+                      style: TextStyle(
+                        fontFamily: 'Noto_Serif_JP',
+                        fontSize: 20
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(17),
                   ),
                   Container(
                     width: size.width,
@@ -94,21 +138,20 @@ class _ResultState extends State<Result> {
                       child: new Text(
                         '戻る',
                         style: new TextStyle(
+                          fontFamily: 'Noto_Serif_JP',
                           color: Colors.white
                         ),
                       ),
                       onPressed: (){
-                        Navigator.pushNamed(context, '/');
+                        Navigator.pop(context);
                       },
                       color: Colors.lime[700],
-                    ),
-                    margin: new EdgeInsets.only(
-                      top: 20.0
                     ),
                   ),
                 ],
               ),
-            )
+            ):
+            Center( child: const CircularProgressIndicator() ),
           ),
         ],
       ),

@@ -24,8 +24,8 @@ class TitlePage extends StatefulWidget {
 
 class _TitleState extends State<TitlePage> {
   List<Data> _dataList = [
-    Data(index: 0, text: "E ☆ Hoshinari"),
-    Data(index: 1, text: "K 米 〇kome"),
+    Data(index: 0, text: "夏目 漱石"),
+    Data(index: 1, text: "芥川 龍之介"),
   ];
   int _index = 0;
 
@@ -50,14 +50,18 @@ class _TitleState extends State<TitlePage> {
               });
             },
             child: Container(
-              color: Color.fromARGB(200, 200, 20, 20),
+              color: Color.fromARGB(240, 200, 30, 30),
+              padding: EdgeInsets.all(5),
               child: Center(
-                child: Text(
-                  _dataList[i].text,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: Colors.white
+                child: Container(
+                  child: Text(
+                    _dataList[i].text,
+                    style: TextStyle(
+                      fontFamily: 'Noto_Serif_JP',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.white
+                    ),
                   ),
                 ),
               ),

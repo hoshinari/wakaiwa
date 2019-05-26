@@ -44,7 +44,7 @@ flutter:
   fonts:
     - family: Noto_Serif_JP
       fonts:
-        - asset: assets/fonts/NotoSerifJP-Medium.otf
+        - asset: assets/fonts/NotoSerifJP-black.otf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
