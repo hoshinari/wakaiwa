@@ -94,7 +94,7 @@ class _TitleState extends State<TitlePage> {
             ),
           ),
           Container(
-            padding: new EdgeInsets.fromLTRB(20, 250, 20, 20),
+            padding: new EdgeInsets.fromLTRB(20, 170, 20, 20),
             child: new ListView(
               children: _wList()
             ),
