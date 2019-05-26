@@ -35,36 +35,33 @@ class _TitleState extends State<TitlePage> {
                 child: new ListView(
                   children: <Widget>[
                     Image.asset('images/wakaiwa.png'),
-                    // ListView.builder(
-                    //   itemBuilder: (BuildContext context, int index) {
-                    //     return Card(
-                    //       child: Padding(
-                    //           child: Text('$index', style: TextStyle(fontSize: 22.0),),
-                    //           padding: EdgeInsets.all(20.0),),
-                    //       );
-                    //     },
-                    //   itemCount: listItem.length,
-                    // ),
-                    DropdownButton<String>(
-                      value: dropdownValue,
-                      onChanged: (String newValue) {
-                        setState(() {
-                          dropdownValue = newValue;
-                        });
-                      },
-                      items: <String>['E ☆ Hoshinari', 'K 米 〇kome']
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
+                    new Theme(
+                      data: Theme.of(context)
+                          .copyWith(canvasColor: Theme.of(context).accentColor),
+                      child: DropdownButton<String>(
+                        value: dropdownValue,
+                        style: new TextStyle(
+                          color: Colors.white,
+                        ),
+                        onChanged: (String newValue) {
+                          setState(() {
+                            dropdownValue = newValue;
+                          });
+                        },
+                        items: <String>['E ☆ Hoshinari', 'K 米 〇kome']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
                     ),
                     Container(
                       width: size.width,
                       child: new RaisedButton(
                         child: new Text(
-                          '変換',
+                          '言葉を生成する',
                           style: new TextStyle(color: Colors.white),
                         ),
                         onPressed: () {
