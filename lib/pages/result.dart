@@ -18,17 +18,23 @@ class Request {
   };
 }
 class Result extends StatefulWidget {
+  final int index;
+
+  Result({this.index});
   @override
-  _ResultState createState() => new _ResultState();
+  _ResultState createState() => new _ResultState(index: index);
 }
 
 class _ResultState extends State<Result> {
   String _secntence = "";
+  final int index;
+
+  _ResultState({this.index});
 
   @override
   void initState(){
     super.initState();
-    _requestToAPI(1).then((String sentence){
+    _requestToAPI(index).then((String sentence){
       setState(() {
         _secntence = sentence;
       });
