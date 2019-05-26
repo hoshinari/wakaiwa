@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
+import 'package:k_paraphrase/pages/result.dart';
 
 class Data {
   final int index;
@@ -39,7 +40,13 @@ class _TitleState extends State<TitlePage> {
             onTap: (){
               setState(() {
                 _index = _dataList[i].index;
-                Navigator.of(context).pushNamed("/result");
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Result(index: _index);
+                    },
+                  ),
+                );
               });
             },
             child: Container(
