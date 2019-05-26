@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
+
 
 class Result extends StatefulWidget {
   @override
@@ -6,31 +8,62 @@ class Result extends StatefulWidget {
 }
 
 class _ResultState extends State<Result> {
+
+
+  @override
+  void initState(){
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return new Scaffold(
-      body: new Center(
-        child:new Container(
-          width: size.width,
-          child: new RaisedButton(
-            child: new Text(
-              'もどる',
-              style: new TextStyle(
-                color: Colors.white
-              ),
+      body: Stack(
+        children:<Widget>[
+          Center(
+            child: Image.asset(
+              'images/wasi2.png',
+              fit: BoxFit.cover,
+              height: size.height,
             ),
-            onPressed: (){
-              Navigator.pushNamed(context, '/');
-            },
-            color: Colors.blue,
           ),
-          margin: new EdgeInsets.only(
-            top: 20.0
+          BackdropFilter(
+            filter: ui.ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
+            child: Container(
+              color: Colors.black.withOpacity(0.2),
+            ),
           ),
-        ),
-      ),
 
+          Container(
+            padding: new EdgeInsets.all(50.0),
+            child: new Form(
+              child: new ListView(
+                children: <Widget>[
+                  Text("我輩は猫である。"),
+                  Container(
+                    width: size.width,
+                    child: new RaisedButton(
+                      child: new Text(
+                        '戻る',
+                        style: new TextStyle(
+                          color: Colors.white
+                        ),
+                      ),
+                      onPressed: (){
+                        Navigator.pushNamed(context, '/result');
+                      },
+                      color: Colors.lime[700],
+                    ),
+                    margin: new EdgeInsets.only(
+                      top: 20.0
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ),
+        ],
+      ),
     );
 
   }

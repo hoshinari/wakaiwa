@@ -52,7 +52,11 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.12.0+2"
+=======
+    version: "0.11.3+17"
+>>>>>>> 736f87222e79a483ee62c41dd218b6d0e087395f
   http_parser:
     dependency: transitive
     description:
