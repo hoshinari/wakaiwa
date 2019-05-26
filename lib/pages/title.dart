@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
-import 'package:k_paraphrase/pages/result.dart';
+import 'package:wakaiwa/pages/result.dart';
 
 class Data {
   final int index;

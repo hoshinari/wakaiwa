@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:k_paraphrase/pages/title.dart';
-import 'package:k_paraphrase/pages/result.dart';
+import 'package:wakaiwa/pages/title.dart';
+import 'package:wakaiwa/pages/result.dart';
 
 void main() {
   runApp(App());
