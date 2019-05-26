@@ -1,5 +1,21 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
+import 'package:k_paraphrase/pages/result.dart';
+
+class Data {
+  final int index;
+  final String text;
+
+  Data({
+    this.index,
+    this.text
+  });
+
+  Map<String, dynamic> toJson() => {
+    'index': index,
+    'text': text,
+  };
+}
 
 class TitlePage extends StatefulWidget {
   @override
@@ -7,12 +23,55 @@ class TitlePage extends StatefulWidget {
 }
 
 class _TitleState extends State<TitlePage> {
-  final phraseController = TextEditingController();
-  String dropdownValue = 'E ☆ Hoshinari';
+  List<Data> _dataList = [
+    Data(index: 0, text: "E ☆ Hoshinari"),
+    Data(index: 1, text: "K 米 〇kome"),
+  ];
+  int _index = 0;
+
+  List<Widget> _wList() {
+    List<Widget> b = [];
+    b.add(Image.asset('images/wakaiwa.png'));
+    b.add(Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)));
+    for(var i = 0; i < _dataList.length; i++){
+      b.add(
+        Card(
+          child: InkWell(
+            onTap: (){
+              setState(() {
+                _index = _dataList[i].index;
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Result(index: _index);
+                    },
+                  ),
+                );
+              });
+            },
+            child: Container(
+              color: Color.fromARGB(200, 200, 20, 20),
+              child: Center(
+                child: Text(
+                  _dataList[i].text,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.white
+                  ),
+                ),
+              ),
+            ),
+          ),
+        )
+      );
+    }
+    return b;
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    //var listItem = ["one", "two", "three"];
     return new Scaffold(
       body: Stack(
         children: <Widget>[
@@ -30,50 +89,11 @@ class _TitleState extends State<TitlePage> {
             ),
           ),
           Container(
-              padding: new EdgeInsets.all(50.0),
-              child: new Form(
-                child: new ListView(
-                  children: <Widget>[
-                    Image.asset('images/torilogo.png'),
-                    new Theme(
-                      data: Theme.of(context)
-                          .copyWith(canvasColor: Theme.of(context).accentColor),
-                      child: DropdownButton<String>(
-                        value: dropdownValue,
-                        style: new TextStyle(
-                          color: Colors.white,
-                        ),
-                        onChanged: (String newValue) {
-                          setState(() {
-                            dropdownValue = newValue;
-                          });
-                        },
-                        items: <String>['E ☆ Hoshinari', 'K 米 〇kome']
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-                    Container(
-                      width: size.width,
-                      child: new RaisedButton(
-                        child: new Text(
-                          '言葉を生成する',
-                          style: new TextStyle(color: Colors.white),
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/result');
-                        },
-                        color: Colors.lime[700],
-                      ),
-                      margin: new EdgeInsets.only(top: 20.0),
-                    ),
-                  ],
-                ),
-              )),
+            padding: new EdgeInsets.all(50.0),
+            child: new ListView(
+              children: _wList()
+            ),
+          ),
         ],
       ),
     );
