@@ -101,7 +101,7 @@ class _ResultState extends State<Result> {
                         ),
                       ),
                       onPressed: (){
-                        Navigator.pushNamed(context, '/title');
+                        Navigator.pushNamed(context, '/');
                       },
                       color: Colors.lime[700],
                     ),
