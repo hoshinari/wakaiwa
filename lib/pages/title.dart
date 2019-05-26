@@ -30,6 +30,7 @@ class _TitleState extends State<TitlePage> {
             ),
           ),
           Container(
+<<<<<<< HEAD
             padding: new EdgeInsets.all(50.0),
             child: new Form(
               child: new ListView(
@@ -52,6 +53,41 @@ class _TitleState extends State<TitlePage> {
                         '変換',
                         style: new TextStyle(
                           color: Colors.white
+=======
+              padding: new EdgeInsets.all(50.0),
+              child: new Form(
+                child: new ListView(
+                  children: <Widget>[
+                    Image.asset('images/wakaiwa.png'),
+                    new Theme(
+                      data: Theme.of(context)
+                          .copyWith(canvasColor: Theme.of(context).accentColor),
+                      child: DropdownButton<String>(
+                        value: dropdownValue,
+                        style: new TextStyle(
+                          color: Colors.white,
+                        ),
+                        onChanged: (String newValue) {
+                          setState(() {
+                            dropdownValue = newValue;
+                          });
+                        },
+                        items: <String>['E ☆ Hoshinari', 'K 米 〇kome']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                    Container(
+                      width: size.width,
+                      child: new RaisedButton(
+                        child: new Text(
+                          '言葉を生成する',
+                          style: new TextStyle(color: Colors.white),
+>>>>>>> b09ec252256acb33f27d9602473fd8ebbc0a6b56
                         ),
                       ),
                       onPressed: (){
