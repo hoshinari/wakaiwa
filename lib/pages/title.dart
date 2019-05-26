@@ -31,8 +31,8 @@ class _TitleState extends State<TitlePage> {
 
   List<Widget> _wList() {
     List<Widget> b = [];
-    b.add(Image.asset('images/wakaiwa.png'));
-    b.add(Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0)));
+    b.add(Image.asset('images/logo.png'));
+    b.add(Padding(padding: EdgeInsets.fromLTRB(0, 40, 0, 0)));
     for(var i = 0; i < _dataList.length; i++){
       b.add(
         Card(
@@ -69,6 +69,7 @@ class _TitleState extends State<TitlePage> {
           ),
         )
       );
+      b.add(Padding(padding: EdgeInsets.all(5)));
     }
     return b;
   }
@@ -93,7 +94,7 @@ class _TitleState extends State<TitlePage> {
             ),
           ),
           Container(
-            padding: new EdgeInsets.all(50.0),
+            padding: new EdgeInsets.fromLTRB(20, 250, 20, 20),
             child: new ListView(
               children: _wList()
             ),
