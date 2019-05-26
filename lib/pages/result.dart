@@ -17,20 +17,6 @@ class Request {
     'index': index,
   };
 }
-
-class Response {
-  final String sentence;
-
-  Response({
-    this.sentence
-  });
-
-  factory Response.fromJson(Map<String, dynamic> json) {
-    return Response(
-      sentence: json['sentence'],
-    );
-  }
-}
 class Result extends StatefulWidget {
   @override
   _ResultState createState() => new _ResultState();
@@ -42,14 +28,14 @@ class _ResultState extends State<Result> {
   @override
   void initState(){
     super.initState();
-    _requestToAPI(1).then((Response r){
+    _requestToAPI(1).then((String sentence){
       setState(() {
-        _secntence = r.sentence;
+        _secntence = sentence;
       });
     });
   }
 
-  Future<Response> _requestToAPI(int index) async {
+  Future<String> _requestToAPI(int index) async {
     var url = "$_baseURL";
     var request = new Request(index: index);
     final response = await http.post(url,
@@ -59,9 +45,9 @@ class _ResultState extends State<Result> {
       }
     );
     if (response.statusCode == 200) {
-      return Response.fromJson(jsonDecode(response.body));
+      return response.body;
     } else {
-      return new Response();
+      return "";
     }
   }
 
@@ -90,7 +76,12 @@ class _ResultState extends State<Result> {
             child: new Form(
               child: new ListView(
                 children: <Widget>[
-                  Text(_secntence),
+                  Text(
+                    _secntence,
+                    style: TextStyle(
+                      fontFamily:'Noto_Serif_JP',
+                    ),
+                  ),
                   Container(
                     width: size.width,
                     child: new RaisedButton(
@@ -101,7 +92,7 @@ class _ResultState extends State<Result> {
                         ),
                       ),
                       onPressed: (){
-                        Navigator.pushNamed(context, '/title');
+                        Navigator.pushNamed(context, '/');
                       },
                       color: Colors.lime[700],
                     ),

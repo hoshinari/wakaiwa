@@ -34,7 +34,7 @@ class _TitleState extends State<TitlePage> {
               child: new Form(
                 child: new ListView(
                   children: <Widget>[
-                    Image.asset('images/wakaiwa.png'),
+                    Image.asset('images/torilogo.png'),
                     new Theme(
                       data: Theme.of(context)
                           .copyWith(canvasColor: Theme.of(context).accentColor),

@@ -39,6 +39,12 @@ flutter:
     - images/image.png
     - images/wakaiwa.png
     - images/wasi2.png
+    - images/torilogo.png
+    
+  fonts:
+    - family: Noto_Serif_JP
+      fonts:
+        - asset: assets/fonts/NotoSerifJP-Medium.otf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
